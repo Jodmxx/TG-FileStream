@@ -4,7 +4,7 @@
 import logging
 from pyrogram import filters, errors
 from WebStreamer.vars import Var
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, quote
 from WebStreamer.bot import StreamBot, logger
 from WebStreamer.utils import get_hash, get_name
 from pyrogram.enums.parse_mode import ParseMode
@@ -43,7 +43,7 @@ async def media_receive_handler(_, m: Message):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton("Download Link", url=stream_link)],
-                    [InlineKeyboardButton("Stream Link", url=f"https://stream.anshumanpm.eu.org/stream?url={stream_link}")],
+                    [InlineKeyboardButton("Stream Link", url=f"https://stream.anshumanpm.eu.org/stream?url={quote(stream_link)}")],
                 ]
             ),
         )
